@@ -31,12 +31,15 @@ function fzf-emoji
   # copy command priority
   #   - xsel
   #   - pbcopy
+  #   - win32yank
   if type "xsel" >/dev/null 2>&1
       set -f copy "xsel --clipboard --input"
   else if type "pbcopy" >/dev/null 2>&1
       set -f copy "pbcopy"
+  else if type "win32yank" >/dev/null 2>&1
+      set -f copy "win32yank"
   else
-      command echo "Error `xsel` or `pbcopy` is needed." 1>&2
+      command echo "Error `xsel` or `pbcopy` or `win32yank` is needed." 1>&2
       exit 1
   end
   command cat $destination/emoji.json | jq -r '.[]  | ":" + .aliases[] + ":" + " " + .emoji ' | fzf --height=10 | cut -d" " -f1 | $copy
