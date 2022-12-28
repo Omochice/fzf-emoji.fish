@@ -17,14 +17,13 @@ The first time you run command, json file will be downloaded to `$XDG_CONFIG_HOM
 - `fzf`
 - `jq`
 - `curl` or `wget`
-- `xsel` or `pbcopy`
-- `cut`
+- `xsel` or `pbcopy` or `win32yank`
 
 After installing, write the keybinding in `$XDG_CONFIG_HOME/fish/functions/fish_user_key_bindings.fish`.
 
 ```bash
 function fish_user_key_bindings
-    bind \cE fzf-emoji
+    bind \cE fzf-emoji  // map your favorite key!
 end
 ```
 
