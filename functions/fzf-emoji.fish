@@ -42,6 +42,6 @@ function fzf-emoji
       command echo "Error `xsel` or `pbcopy` or `win32yank` is needed." 1>&2
       exit 1
   end
-  command cat $destination/emoji.json | jq -r '.[]  | ":" + .aliases[] + ":" + " " + .emoji ' | fzf --height=10 | cut -d" " -f1 | $copy
+  command cat $destination/emoji.json | jq -r '.[]  | ":" + .tags[] + ":" + " " + .emoji ' | fzf --height=10 | cut -d" " -f1 | $copy
   commandline -f repaint
 end
